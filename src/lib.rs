@@ -2,6 +2,9 @@ extern crate libc;
 extern crate log;
 extern crate libsystemd_sys as ffi;
 extern crate cstr_argument;
+#[cfg(feature = "serde-integration")]
+#[macro_use]
+extern crate serde;
 
 pub use std::io::{Result, Error};
 

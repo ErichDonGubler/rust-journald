@@ -3,11 +3,13 @@ use std::collections::BTreeMap;
 type JournalEntryFields = BTreeMap<String, String>;
 
 #[derive(Clone, Debug)]
+#[cfg_attr(feature = "serde-integration", derive(Deserialize, Serialize))]
 pub struct JournalEntry {
 	pub	fields: JournalEntryFields,
 }
 
 #[derive(Clone, Debug)]
+#[cfg_attr(feature = "serde-integration", derive(Deserialize, Serialize))]
 pub struct JournalEntryTimestamp {
 	pub timestamp_us: i64
 }
