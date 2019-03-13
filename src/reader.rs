@@ -1,8 +1,7 @@
 use super::{JournalEntry, Result};
-use ffi::journal as ffi;
+use crate::ffi::journal as ffi;
 use libc::{c_int, size_t};
 use std::collections::BTreeMap;
-use std::ptr;
 
 // A single log entry from journal.
 

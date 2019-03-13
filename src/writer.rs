@@ -1,6 +1,6 @@
 use super::{JournalEntry, Result};
-use ffi::array_to_iovecs;
-use ffi::journal as ffi;
+use crate::ffi::array_to_iovecs;
+use crate::ffi::journal as ffi;
 use libc::c_int;
 
 pub fn submit(entry: &JournalEntry) -> Result<()> {

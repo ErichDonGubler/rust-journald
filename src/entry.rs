@@ -1,3 +1,5 @@
+#[cfg(feature = "serde-integration")]
+use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 
 type JournalEntryFields = BTreeMap<String, String>;
