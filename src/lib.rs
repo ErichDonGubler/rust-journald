@@ -1,12 +1,12 @@
-extern crate libc;
-extern crate log;
-extern crate libsystemd_sys as ffi;
 extern crate cstr_argument;
+extern crate libc;
+extern crate libsystemd_sys as ffi;
+extern crate log;
 #[cfg(feature = "serde-integration")]
 #[macro_use]
 extern crate serde;
 
-pub use std::io::{Result, Error};
+pub use std::io::{Error, Result};
 
 /// Convert a systemd ffi return value into a Result
 pub fn ffi_result(ret: ffi::c_int) -> Result<ffi::c_int> {
@@ -26,18 +26,17 @@ pub fn ffi_result(ret: ffi::c_int) -> Result<ffi::c_int> {
 /// the FFI call.
 #[macro_export]
 macro_rules! sd_try {
-    ($e:expr) => ({
-        try!($crate::ffi_result(unsafe{ $e}))
-    })
+    ($e:expr) => {{
+        try!($crate::ffi_result(unsafe { $e }))
+    }};
 }
 
-#[path="journal_entry.rs"]
+#[path = "journal_entry.rs"]
 mod entry;
 pub use self::entry::*;
 
-#[path="journal_reader.rs"]
+#[path = "journal_reader.rs"]
 pub mod reader;
 
-#[path="journal_writer.rs"]
+#[path = "journal_writer.rs"]
 pub mod writer;
-
